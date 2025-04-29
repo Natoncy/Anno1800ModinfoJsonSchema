@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/modinfo.schema.json",
+  "title": "Anno 1800 ModInfo",
+  "description": "Schema for Anno 1800 modinfo.json files used by the GU17 modloader. Based on https://github.com/anno-mods/Modinfo/blob/master/modinfo-format.md",
+  "type": "object",
+  "required": [
+    "ModID",
+    "Version",
+    "ModName",
+    "Category"
+  ],
+  "properties": {
+    "ModID": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "description": "A unique identifier for your mod. Best include the creator name to avoid conflicts.\nOnly letters, numbers and underscores allowed."
+    },
+    "Version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
+      "description": "Version in format major.minor or major.minor.patch."
+    },
+    "ModDependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ModIDs this mod depends on."
+    },
+    "LoadAfterIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ModIDs this mod wants to load after."
+    },
+    "IncompatibleIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ModIDs incompatible with this mod."
+    },
+    "DeprecateIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of ModIDs that this mod is replacing."
+    },
+    "Category": {
+      "$ref": "#/$defs/localizedString",
+      "description": "Localized category of the mod. English is mandatory.",
+      "examples": [
+        {
+          "English": "",
+          "French": null,
+          "German": null,
+          "Italian": null,
+          "Japanese": null,
+          "Korean": null,
+          "Polish": null,
+          "Russian": null,
+          "Chinese": null,
+          "Spanish": null,
+          "Taiwanese": null
+        },
+        {
+          "English": "Addon",
+          "French": "Addon",
+          "German": "Addon",
+          "Italian": "Addon",
+          "Japanese": "Addon",
+          "Korean": "Addon",
+          "Polish": "Addon",
+          "Russian": "Addon",
+          "Chinese": "Addon",
+          "Spanish": "Addon",
+          "Taiwanese": "Addon"
+        },
+        {
+          "English": "Building",
+          "French": "Bâtiment",
+          "German": "Gebäude",
+          "Italian": "Edificio",
+          "Japanese": "建物",
+          "Korean": "건물",
+          "Polish": "Budynek",
+          "Russian": "Здание",
+          "Chinese": "建筑物",
+          "Spanish": "Edificio",
+          "Taiwanese": "建築物"
+        },
+        {
+          "English": "Gameplay",
+          "French": "Gameplay",
+          "German": "Gameplay",
+          "Italian": "Gameplay",
+          "Japanese": "Gameplay",
+          "Korean": "Gameplay",
+          "Polish": "Gameplay",
+          "Russian": "Gameplay",
+          "Chinese": "Gameplay",
+          "Spanish": "Gameplay",
+          "Taiwanese": "Gameplay"
+        },
+        {
+          "English": "Misc",
+          "French": "Divers",
+          "German": "Verschiedenes",
+          "Italian": "Varie",
+          "Japanese": "その他",
+          "Korean": "기타",
+          "Polish": "Różne",
+          "Russian": "Разное",
+          "Chinese": "其他",
+          "Spanish": "Varios",
+          "Taiwanese": "其他"
+        },
+        {
+          "English": "Ornamental",
+          "French": "Ornemental",
+          "German": "Ornamental",
+          "Italian": "Ornamentale",
+          "Japanese": "装飾的な",
+          "Korean": "장식적인",
+          "Polish": "Ozdobny",
+          "Russian": "Декоративный",
+          "Chinese": "装饰性的",
+          "Spanish": "Ornamental",
+          "Taiwanese": "裝飾性的"
+        },
+        {
+          "English": "Shared",
+          "French": "Partagé",
+          "German": "Shared",
+          "Italian": "Condiviso",
+          "Japanese": "シェアード",
+          "Korean": "공유",
+          "Polish": "Udostępnionych",
+          "Russian": "Совместный",
+          "Chinese": "共享",
+          "Spanish": "Compartido",
+          "Taiwanese": "共用"
+        },
+        {
+          "English": "Skin",
+          "French": "Skin",
+          "German": "Skin",
+          "Italian": "Skin",
+          "Japanese": "Skin",
+          "Korean": "Skin",
+          "Polish": "Skin",
+          "Russian": "Skin",
+          "Chinese": "Skin",
+          "Spanish": "Skin",
+          "Taiwanese": "Skin"
+        },
+        {
+          "English": "UI",
+          "French": "UI",
+          "German": "UI",
+          "Italian": "UI",
+          "Japanese": "UI",
+          "Korean": "UI",
+          "Polish": "UI",
+          "Russian": "UI",
+          "Chinese": "UI",
+          "Spanish": "UI",
+          "Taiwanese": "UI"
+        }
+      ]
+    },
+    "ModName": {
+      "$ref": "#/$defs/localizedString",
+      "description": "Localized name of the mod. English is mandatory.",
+      "examples": [
+        {
+          "English": "",
+          "French": null,
+          "German": null,
+          "Italian": null,
+          "Japanese": null,
+          "Korean": null,
+          "Polish": null,
+          "Russian": null,
+          "Chinese": null,
+          "Spanish": null,
+          "Taiwanese": null
+        }
+      ]
+    },
+    "Description": {
+      "$ref": "#/$defs/localizedString",
+      "description": "Localized description of the mod.",
+      "examples": [
+        {
+          "English": "",
+          "French": null,
+          "German": null,
+          "Italian": null,
+          "Japanese": null,
+          "Korean": null,
+          "Polish": null,
+          "Russian": null,
+          "Chinese": null,
+          "Spanish": null,
+          "Taiwanese": null
+        }
+      ]
+    },
+    "KnownIssues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/localizedString",
+        "examples": [
+          {
+            "English": "",
+            "French": null,
+            "German": null,
+            "Italian": null,
+            "Japanese": null,
+            "Korean": null,
+            "Polish": null,
+            "Russian": null,
+            "Chinese": null,
+            "Spanish": null,
+            "Taiwanese": null
+          }
+        ]
+      },
+      "description": "List of localized known issues."
+    },
+    "DLCDependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "DLC",
+          "Dependant"
+        ],
+        "properties": {
+          "DLC": {
+            "type": "string",
+            "enum": [
+              "Anarchist",
+              "SunkenTreasures",
+              "Botanica",
+              "ThePassage",
+              "SeatOfPower",
+              "BrightHarvest",
+              "LandOfLions",
+              "Docklands",
+              "Tourism",
+              "Highlife",
+              "SeedsOfChange",
+              "EmpireOfTheSkies",
+              "NewWorldRising",
+              "AmusementPark",
+              "Christmas",
+              "CityLife",
+              "DragonGarden",
+              "Fiesta",
+              "IndustryOrnaments",
+              "OldTown",
+              "PedestrianZone",
+              "SeasonalDecorations",
+              "VehicleSkins",
+              "VibrantCity",
+              "?? National Park Pack DLC",
+              "?? Eldritch Pack DLC",
+              "?? Steampunk Pack DLC",
+              "?? Pirate Cove Pack DLC",
+              "?? End of an Era Pack DLC"
+            ]
+          },
+          "Dependant": {
+            "type": "string",
+            "enum": [
+              "required",
+              "partly",
+              "atLeastOneRequired"
+            ]
+          }
+        }
+      },
+      "description": "List of DLC dependencies."
+    },
+    "Creator": {
+      "type": "string",
+      "description": "Creator's name."
+    },
+    "CreatorContact": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to contact the creator (e.g., GitHub repository)."
+    },
+    "ModioResourceId": {
+      "type": "integer",
+      "description": "mod.io resource ID."
+    },
+    "Image": {
+      "type": "string",
+      "description": "Deprecated base64 image field.",
+      "deprecated": true
+    }
+  },
+  "$defs": {
+    "localizedString": {
+      "type": "object",
+      "properties": {
+        "Chinese": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "English": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "French": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "German": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Italian": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Japanese": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Korean": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Polish": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Russian": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Spanish": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Taiwanese": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "English"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
