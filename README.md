@@ -1,27 +1,35 @@
 # Anno 1800 Modinfo JSON Schema
 
-This repository provides a JSON Schema for validating modinfo.json files in VS Code.
-This is useful for suggestions for properties, autocomplete and checking for required properties.
+This repository provides a JSON Schema for validating `modinfo.json` files in Visual Studio Code.  
+It enables features like autocomplete, property suggestions, and validation of required fields and values.
 
-## How to install
+The rules are based on: [https://github.com/anno-mods/Modinfo/blob/master/modinfo-format.md](https://github.com/anno-mods/Modinfo/blob/master/modinfo-format.md)
 
-1. In VS Code select the search bar at the top center and search for ">user settings json" (do not forget the ">").
-2. Select the one result, it will open a settings.json file.
-3. Add a property "json.schemas" (if it does not already exists) and add the following content like this:
-~~~
-"json.schemas": [
-    {
-        "fileMatch": ["modinfo.json"],
-        "url": "https://raw.githubusercontent.com/Natoncy/Anno1800ModinfoJsonSchema/refs/heads/main/modinfo.schema.json"
-    }
-]
-~~~
-4. Save and restart VS Code.
+## Installation
 
-## How to use
+To enable the schema in VS Code:
 
-When you open your modinfo.json you should see yellow markings where there are errors.
-If you hover over a property you should see a tooltip with the description and errors if any exists.
-For example: Change your "Version" to "test". It should be marked yellow and the tooltip should say "String does not match the pattern of ..." and the description for the property.
+1. Open the Command Palette (`Ctrl+Shift+P`).
+2. Search for and select **"Open User Settings (JSON)"**.
+3. Add (or extend) the `json.schemas` section with the following:
 
-Pressing Ctrl + Spacebar will give you suggestions for the current cursor position in the file.
+   ```json
+   "json.schemas": [
+       {
+           "fileMatch": ["modinfo.json"],
+           "url": "https://raw.githubusercontent.com/Natoncy/Anno1800ModinfoJsonSchema/refs/heads/main/modinfo.schema.json"
+       }
+   ]
+   ```
+
+4. Save the file and restart VS Code.
+
+## Usage
+
+Once configured:
+
+- Opening a `modinfo.json` file will automatically apply the validation.
+- Errors will be highlighted with yellow lines.
+- Hovering over properties displays tooltips with descriptions and validation messages.
+  - For example, setting `"Version": "test"` will trigger a validation warning because it doesn't match the expected pattern.
+- Press `Ctrl + Space` to see autocomplete suggestions for the current cursor position.

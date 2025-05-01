@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/schemas/modinfo.schema.json",
-  "title": "Anno 1800 ModInfo",
+  "title": "Anno 1800 ModInfo v1",
   "description": "Schema for Anno 1800 modinfo.json files used by the GU17 modloader. Based on https://github.com/anno-mods/Modinfo/blob/master/modinfo-format.md",
   "type": "object",
   "required": [
@@ -10,11 +10,19 @@
     "ModName",
     "Category"
   ],
+  "examples": [
+    {
+      "ModID": "",
+      "Version": "1.0",
+      "Category": null,
+      "ModName": null
+    }
+  ],
   "properties": {
     "ModID": {
       "type": "string",
-      "pattern": "^[A-Za-z0-9_]+$",
-      "description": "A unique identifier for your mod. Best include the creator name to avoid conflicts.\nOnly letters, numbers and underscores allowed."
+      "pattern": "^[^<>:\"/\\|?*]+$",
+      "description": "A unique identifier for your mod. Best include the creator name to avoid conflicts.\nThe characters < > : \" / \\ | ? * are not allowed."
     },
     "Version": {
       "type": "string",
@@ -267,12 +275,7 @@
               "PedestrianZone",
               "SeasonalDecorations",
               "VehicleSkins",
-              "VibrantCity",
-              "?? National Park Pack DLC",
-              "?? Eldritch Pack DLC",
-              "?? Steampunk Pack DLC",
-              "?? Pirate Cove Pack DLC",
-              "?? End of an Era Pack DLC"
+              "VibrantCity"
             ]
           },
           "Dependant": {
